@@ -2,7 +2,7 @@ import React from 'react'
 import {useState} from 'react'
 
 function Input() {
-    const [message, setMessage]=useState("Whatever you type will appear down here")
+    const [message, setMessage]=useState("Whatever you type will appear here")
   return (
     <div>
       <form>
