@@ -14,14 +14,13 @@ background: linear-gradient(90deg, rgba(66, 60, 163, 1) 0%, rgba(9, 9, 121, 1) 5
 }
 .container{
     border: 1px solid black;
-    width: 35%;
+    width: 40%;
     margin: 100px auto;
     display: flex;
     gap: 25px;
     flex-direction: column;
     background-color: white;
     padding: 25px;
-    border: 1px solid #000000;
     border-radius: 10px;
 }
 .form{
@@ -66,18 +65,53 @@ background: linear-gradient(90deg, rgba(66, 60, 163, 1) 0%, rgba(9, 9, 121, 1) 5
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 .task{
     text-align: left;
     font-size: 1rem;
 }
 .icons{
-    cursor: pointer;
     font-size: 35px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+.delete, .done{
+    cursor: pointer;
+    padding: 5px;
 }
 .delete:hover{
     background-color: #000000;
     color:red;
     border-radius: 5px;
 }
-
+.done:hover{
+    background-color: green;
+    color:white;
+    border-radius: 50px;
+}
+.done-task {
+  background-color: rgba(0, 128, 0, 0.800);
+  color: white;
+  transition: padding 0.3s ease;
+  padding: 10px;
+}
+.delete-task{
+    background-color: rgba(255, 0, 0, 0.800);
+    color: white;
+    transition: all 0.3s ease;
+    padding: 10px;
+}
+.clear-btn{
+    height: 2rem;
+    width: 20%;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color:rgb(76, 0, 255);
+    color: rgb(130, 205, 255);
+    font-size: 1rem;
+    font-weight:900;
+}
