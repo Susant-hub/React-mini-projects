@@ -10,6 +10,10 @@ function DateTime() {
     const time=now.toLocaleTimeString()
     setDateTime(date +" - " + time)
    },1000)
+
+      return ()=>{
+    clearInterval(id) // means do this beforethe actual function to cleanup 
+   }
   },[])
   
   return (
