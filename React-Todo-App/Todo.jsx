@@ -1,15 +1,22 @@
-import React, {useState} from 'react'
-import "./Input.css"
-import { MdAdd } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
+import React, {useEffect, useState} from 'react'
+import "./Todo.css"
+import { MdAdd, MdDelete } from "react-icons/md";
 import { FaCheck } from "react-icons/fa6";
 
-function Input() {
+function Todo() {
   const [message, setMessage]=useState("")
-  const[todos, setTodos]=useState([])
+
+  const [todos, setTodos]=useState(()=>{
+    const returnTodos=localStorage.getItem("storeTodos")
+    if(!returnTodos) return []
+    return JSON.parse(returnTodos)
+  })
+
   const [doneIndex, setDoneIndex] = useState()
   const [deleteIndex, setDeleteIndex]=useState()
+  const [dateTime, setDateTime]=useState()
 
+  localStorage.setItem("storeTodos", JSON.stringify(todos))
 
   function handleTodo(e){
     e.preventDefault()
@@ -36,10 +43,21 @@ function Input() {
       setDeleteIndex()
     },1000)
   }
+  
+  useEffect(()=>{
+    setInterval(()=>{
+    const now= new Date()
+    const date= now.toLocaleDateString()
+    const time=now.toLocaleTimeString()
+    setDateTime(date +" - " + time)
+   },1000)
+  },[])
+  
 
   return (
     <div className='container'>
       <h1 className='heading'>Todo App</h1>
+      <h2>{dateTime}</h2>
       <form className="form">
         <input type="text" value={message} onChange={(evnt)=>{setMessage(evnt.target.value)}} className='input' placeholder="Enter your tasks"></input>
         <button onClick={handleTodo} className='btn'><MdAdd/></button>
@@ -58,9 +76,9 @@ function Input() {
               </div>
             </div>)}
         </div>
-       {todos.length==0?"":<div className="btn-2"><button onClick={(()=>setTodos([]))} className='clear-btn'>Clear All</button></div>} 
+       {todos.length==0?null:<div className="btn-2"><button onClick={(()=>setTodos([]))} className='clear-btn'>Clear All</button></div>} 
     </div>
   )
 }
 
-export default Input
+export default Todo
