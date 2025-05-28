@@ -1,6 +1,4 @@
-import React from 'react'
-import {useState} from 'react'
-import { MdMargin } from 'react-icons/md';
+import React, { useState } from 'react'
 
 function Counter() {
     let [count, setCount] = useState(0)
@@ -28,7 +26,7 @@ function Counter() {
       <h1 style={{fontSize:"60px"}}>{count}</h1>
       <p>Steps to increase or decrease the count:</p>
 
-      <input type='number' onChange={(e)=>setSteps(Number(e.target.value))}></input>
+      <input type='number' onChange={(e)=>setSteps(Number(e.target.value))} placeholder='steps here'></input>
 
       <div style={buttonStylings}>
       <button style={buttons} onClick={()=>setCount((prev)=> {return (prev+steps)})}>Plus</button>
