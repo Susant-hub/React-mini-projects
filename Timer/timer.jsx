@@ -1,4 +1,5 @@
-import React, {useEffect}, {useState} from 'react'
+import React, {useState} from 'react'
+import {useEffect} from 'react'               
 
 function Timer() {
   const [timer, setTimer]= useState(0)
@@ -20,6 +21,7 @@ function Timer() {
       <h1>{timer}</h1>
       <button onClick={()=>setRunning(true)}>Start</button>
       <button onClick={()=>setRunning(false)}>Stop</button>
+      <button onClick={()=>{setTimer(0), setRunning(false)}}>Reset</button>
     </div>
   )
 }
