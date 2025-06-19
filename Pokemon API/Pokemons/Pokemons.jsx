@@ -2,10 +2,12 @@ import React from 'react'
 import {useEffect} from 'react'
 import {useState} from 'react'
 import './pokemon.css'
+import PokemonCards from './PokemonCards'
 
 function Pokemon() {
-    let api="https://pokeapi.co/api/v2/pokemon?limit=30"
+    let api="https://pokeapi.co/api/v2/pokemon?limit=40"
     const [pokemons, setPokemons] = useState([])
+    const [search, setSearch] = useState(null)
 
     async function getData(){
         try {
@@ -21,7 +23,6 @@ function Pokemon() {
         })
         )
         setPokemons(allData)
-        console.log(names)
         } catch (error) {
           console.log(error)
         }
@@ -32,17 +33,9 @@ function Pokemon() {
     },[])
 
   return (
-    <div className='container'>
-
-      {pokemons.map((items)=>{return (
-        <>
-        <div className='cards' key={items.id} >
-        <img src={items.sprites.other.dream_world.front_default} className="img"></img>
-        <h3>{items.name}</h3>
-        </div>
-        </>)
-      })}
-
+    <div className='big-container'>
+    <h1>Pokemon Cards</h1>
+    <PokemonCards pokemons={pokemons}/>
     </div>
   )
 }
